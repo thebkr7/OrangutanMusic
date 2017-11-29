@@ -1,6 +1,9 @@
-var orangutan = angular.module('orangutan', []);
+var orangutan = angular.module('orangutan', []); //not sure why [] is needed
 
-orangutan.controller('bioController', ['$scope', '$http', function($scope, $http) {
+//Todo: modularize into seperate folders
+  //use components/bindings for data transfer
+
+orangutan.controller('bigController', ['$scope', '$http', '$window', function($scope, $http, $window) {
   var input = {};
   var videos = [];
 
@@ -26,6 +29,41 @@ orangutan.controller('bioController', ['$scope', '$http', function($scope, $http
     return url
   }
 
+
+
+  $scope.search = function(query, callback) {
+      $http.get('https://www.googleapis.com/youtube/v3/search', {
+        params: {
+          part: 'snippet',
+          q: query,
+          type: 'video',
+          maxResults: 5,
+          key: '', //TODO $window.key get working
+          videoEmbeddable: 'true'
+        }
+      })
+      .then(function({data}) {
+        if (callback) {
+          callback(data.items);
+        }
+      })
+      .catch(function({data}) {
+        data.error.errors.forEach(function(err) {
+          console.error(err);
+        });
+      });
+    };
+
+
+  console.log($scope.search('cat', function(data) {
+    console.log(data)
+  }))
+
+
+
+
+
+//PLAY ON CLICK
   $scope.onYouTubeIframeAPIReady = function(video) {
     video = video.slice(32);
     var e = document.getElementById("youtube-audio"),
@@ -60,3 +98,33 @@ orangutan.controller('bioController', ['$scope', '$http', function($scope, $http
   }
 
 }]);
+
+
+
+// orangutan.service('youTube', function($http, $window) {
+//   this.search = function(query, callback) {
+//     $http.get('https://www.googleapis.com/youtube/v3/search', {
+//       params: {
+//         part: 'snippet',
+//         q: query,
+//         type: 'video',
+//         maxResults: 5,
+//         key: $window.YOUTUBE_API_KEY,
+//         videoEmbeddable: 'true'
+//       }
+//     })
+//     .then(function({data}) {
+//       if (callback) {
+//         callback(data.items);
+//       }
+//     })
+//     .catch(function({data}) {
+//       data.error.errors.forEach(function(err) {
+//         console.error(err.message);
+//       });
+//     });
+//   };
+// });
+
+// orangutan.service.s
+

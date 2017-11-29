@@ -5,17 +5,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
     <script src="http://www.youtube.com/player_api"></script>
     <script src="./app.js"></script>
-
-
-    <!-- <div data-video="9ka5bgHnHyg"
-         data-autoplay="0"
-         data-loop="1"
-         id="youtube-audio">
-  </div>
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script> -->
-
-
     <style type="text/css">
       body {
         background-color: #D3D3D3;
@@ -26,7 +15,7 @@
     </style>
   </head>
 
-  <body ng-app="orangutan" ng-controller="bioController">
+  <body ng-app="orangutan" ng-controller="bigController">
 
     <button ng-click="">Login</button>
     <button ng-click="">Join</button>
@@ -34,9 +23,9 @@
     <div ng-repeat="n in videos" >
       <div ng-click="playMusic(n.url)">
         <img class="image" src="http://baligolive.com/wp-content/uploads/2017/04/for.jpg" width="60" >
-        <td ng-src="https://www.youtube.com/watch?v=9ka5bgHnHyg&autoplay=1" class="username">{{n.title}}</td>
+        <td class="username">{{n.title}}</td>
 
-    <div id="youtube-audio" ng-click="onYouTubeIframeAPIReady(n.url)">{{n.url}}
+        <div id="youtube-audio" ng-click="onYouTubeIframeAPIReady(n.url)">{{n.url}}
       </div>
       <script src="https://www.youtube.com/iframe_api"></script>
       </div>
