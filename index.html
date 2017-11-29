@@ -21,13 +21,14 @@
     <button ng-click="">Join</button>
 
     <div ng-repeat="n in videos" >
-      <div ng-click="playMusic(n.url)">
-        <img class="image" src="http://baligolive.com/wp-content/uploads/2017/04/for.jpg" width="60" >
-        <td class="username">{{n.title}}</td>
+      <div ng-repeat="x in n.music.data" >
+        <img class="image" id="youtube-audio" src="{{x.snippet.thumbnails.medium.url}}" width="60" ng-click="onYouTubeIframeAPIReady(x.id.videoId)" >
+        <td class="title">{{x.snippet.title.split(' ').slice(0, 4).join(' ')}}</td>
 
-        <div id="youtube-audio" ng-click="onYouTubeIframeAPIReady(n.url)">{{n.url}}
-      </div>
-      <script src="https://www.youtube.com/iframe_api"></script>
+        <div id="youtube-audio" >
+          {{}}
+        </div>
+        <script src="https://www.youtube.com/iframe_api"></script>
       </div>
     </div>
 

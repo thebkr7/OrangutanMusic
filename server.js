@@ -31,42 +31,27 @@ app.get('/videos', function(req, res) {
 
 
 //HANDLE DIARY POSTS
-app.post('/entries', function(req, res) {
-  // console.log('POST REQ SESSION USER', req.session.user);
-  addSong(res, req, req.body.title, req.body.text);
-});
+// app.post('/save', function(req, res) {
+//   console.log('POST REQ SESSION USER', req.body);
+//   addSong(req.body);
+// });
 
-var addSong = function(res, req, title, text) {
-  if (error === null) {
-    console.log(response);
-  }
-  var newSong = new db.Song({
-    title: title,
-    text: text,
-    // username: req.session.user
-  });
-  newSong.save(function(error) {
-    if (error) throw error;
-    res.status(200).end();
-  });
-}
-
-//MAKE FAKE DATA
-// var addSong = function(res, req, title, text) {
-//   // if (error === null) {
-//   //   console.log(response);
-//   // }
+// var addSong = function(songsObj) {
 //   var newSong = new db.Song({
-//     title: 'The Best Of YIRUMA ',
-//     url: 'https://www.youtube.com/watch?v=8Z5EjAmZS1o',
-//     // username: 'unkown'
+//     title: 'Kygo',
+//     music: songsObj
+//     // text: text,
+//     // username: req.session.user
 //   });
 //   newSong.save(function(error) {
 //     if (error) throw error;
-//     // res.status(200).end();
+//     res.status(200).end();
 //   });
 // }
-// addSong();
+
+
+
+
 
 
 /*
