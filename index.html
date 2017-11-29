@@ -1,0 +1,36 @@
+
+<html lang="en">
+  <head>
+    <title>Orangutan Music</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script src="./app.js"></script>
+    <style type="text/css">
+      body {
+        background-color: #D3D3D3;
+      },
+      .description {
+        color: blue;
+      }
+    </style>
+  </head>
+
+
+  <body ng-app="orangutan" ng-controller="bioController">
+
+    <button ng-click="">Login</button>
+    <button ng-click="">Join</button>
+
+    <div class="profile" ng-click="emailClickHandler()" ng-repeat="n in videos" >
+      <br>
+      <img class="image" src="http://baligolive.com/wp-content/uploads/2017/04/for.jpg" width="60" >
+      <td class="username">{{n.title}}</td>
+      <td>
+        <details>
+          <summary class="message">{{n.url}}</summary>
+        </details>
+      </td>
+    </div>
+
+
+  </body>
+</html>
